@@ -24,7 +24,7 @@ vim.opt.backup = false
 vim.opt.number = true
 vim.opt.wrap = false
 vim.opt.mouse = 'a'
-vim.opt.clipboard = 'unnamed'
+vim.opt.clipboard = 'unnamedplus'
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -43,3 +43,15 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     vim.api.nvim_win_set_cursor(0, pos)
   end,
 })
+
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+  },
+}
