@@ -12,11 +12,10 @@ Slim dotfiles for remote machines. No heavy dependencies — just vi keybindings
 
 ## Install
 
-Requires [homeshick](https://github.com/andsens/homeshick) (or [homesick](https://github.com/technicalpickles/homesick)):
+Requires [homeshick](https://github.com/andsens/homeshick)
 
 ```bash
-homeshick clone <repo-url>
-homeshick link dotfiles-remote
+homeshick clone https://github.com/jeremyjh/dotfiles-remote
 ```
 
 Or symlink manually:
