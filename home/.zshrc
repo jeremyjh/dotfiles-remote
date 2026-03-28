@@ -65,5 +65,9 @@ fi
 
 alias k=kubectl
 
+# homeshick
+source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+source "$HOME/.homesick/repos/homeshick/completions/homeshick.zsh"
+
 # Load local overrides if present
 [[ -f ~/.envlocal ]] && source ~/.envlocal
