@@ -43,7 +43,12 @@ bindkey -r "^s"
 stty -ixon
 
 export TERM="xterm-256color"
-export EDITOR=vim
+if command -v nvim &>/dev/null; then
+  export EDITOR=nvim
+  alias vim=nvim
+else
+  export EDITOR=vim
+fi
 export LESS="-R"
 
 # PATH
