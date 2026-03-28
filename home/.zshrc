@@ -10,15 +10,26 @@ bindkey "^[[F" end-of-line
 # vi mode indicator in prompt
 function zle-line-init zle-keymap-select {
   case $KEYMAP in
-    vicmd) VIMODE='[N]' ;;
-    *)     VIMODE='[I]' ;;
+    vicmd) VIMODE='%F{yellow}[N]%f' ;;
+    *)     VIMODE='%F{green}[I]%f' ;;
   esac
   zle reset-prompt
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-PROMPT='${VIMODE} %n@%m:%~%# '
+# git info
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' unstagedstr '*'
+zstyle ':vcs_info:git:*' stagedstr '+'
+zstyle ':vcs_info:git:*' formats ' %F{magenta}(%b%u%c)%f'
+zstyle ':vcs_info:git:*' actionformats ' %F{magenta}(%b|%F{red}%a%F{magenta}%u%c)%f'
+precmd() { vcs_info }
+
+setopt PROMPT_SUBST
+PROMPT='${VIMODE} %F{cyan}%n@%m%f:%F{yellow}%~%f${vcs_info_msg_0_} %# '
 
 # History
 setopt histignorespace
