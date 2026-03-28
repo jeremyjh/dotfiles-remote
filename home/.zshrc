@@ -45,9 +45,11 @@ stty -ixon
 export TERM="xterm-256color"
 if command -v nvim &>/dev/null; then
   export EDITOR=nvim
+  export VISUAL=nvim
   alias vim=nvim
 else
   export EDITOR=vim
+  export VISUAL=vim
 fi
 export LESS="-R"
 
